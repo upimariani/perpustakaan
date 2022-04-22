@@ -13,7 +13,19 @@
                         <li class="breadcrumb-item active">Admin</li>
                     </ol>
                 </div>
+
             </div>
+            <?php
+            if ($this->session->userdata('success')) {
+            ?>
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                    <?= $this->session->userdata('success') ?>
+                </div>
+            <?php
+            }
+            ?>
         </div><!-- /.container-fluid -->
     </section>
     <!-- Main content -->
@@ -31,32 +43,49 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Admin</th>
-                                        <th>Alamat</th>
-                                        <th>No Telepon</th>
-                                        <th>Akun</th>
-                                        <th>Action</th>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Action</th>
+                                        <th class="text-center">Nama Admin</th>
+                                        <th class="text-center">Alamat</th>
+                                        <th class="text-center">No Telepon</th>
+                                        <th class="text-center">Akun</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($admin as $key => $value) {
+                                    ?>
+                                        <tr>
+                                            <td class="text-center"><?= $no++ ?>.</td>
+                                            <td class="text-center">
+                                                <a href="<?= base_url('cKelolaDataMaster/edit_admin/' . $value->id_admin) ?>" class="btn btn-app btn-sm">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </a>
+                                                <a href="<?= base_url('cKelolaDataMaster/delete_admin/' . $value->id_admin) ?>" class="btn btn-app btn-sm">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
+                                            </td>
+                                            <td><?= $value->nama_admin ?></td>
+                                            <td><?= $value->alamat ?></td>
+                                            <td><?= $value->no_hp ?></td>
+                                            <td>Username : <span class="badge badge-warning"><?= $value->username ?></span><br>
+                                                Password : <span class="badge bg-olive"><?= $value->password ?></span></td>
+
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Admin</th>
-                                        <th>Alamat</th>
-                                        <th>No Telepon</th>
-                                        <th>Akun</th>
-                                        <th>Action</th>
+                                        <th class="text-center">No</th>
+                                        <th class="text-center">Action</th>
+                                        <th class="text-center">Nama Admin</th>
+                                        <th class="text-center">Alamat</th>
+                                        <th class="text-center">No Telepon</th>
+                                        <th class="text-center">Akun</th>
                                     </tr>
                                 </tfoot>
                             </table>

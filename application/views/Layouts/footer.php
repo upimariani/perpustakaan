@@ -99,6 +99,85 @@
   });
 </script>
 <script>
+  $(document).ready(function() {
+    $('#kategori').validate({
+      rules: {
+        kategori: {
+          required: true
+        }
+
+      },
+      messages: {
+        kategori: {
+          required: "Masukkan Kategori Buku"
+        }
+      },
+      errorElement: 'span',
+      errorPlacement: function(error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      }
+    });
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $('#buku').validate({
+      rules: {
+        kategori: {
+          required: true
+        },
+        judul: {
+          required: true
+        },
+        pengarang: {
+          required: true
+        },
+        tahun: {
+          required: true
+        },
+        penerbit: {
+          required: true
+        },
+      },
+      messages: {
+        kategori: {
+          required: "Masukkan Kategori Buku"
+        },
+        judul: {
+          required: "Masukkan Judul Buku"
+        },
+        pengarang: {
+          required: "Masukkan Pengarang Buku"
+        },
+        tahun: {
+          required: "Masukkan Tahun Buku"
+        },
+        penerbit: {
+          required: "Masukkan Penerbit Buku"
+        },
+      },
+      errorElement: 'span',
+      errorPlacement: function(error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      }
+    });
+  });
+</script>
+<script>
   $(function() {
     $("#example1").DataTable({
       "responsive": true,
