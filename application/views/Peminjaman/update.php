@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Peminjaman</h1>
+                    <h1>Update Peminjaman</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -29,7 +29,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="<?= base_url('cPeminjaman/create') ?>" method="POST">
+                        <form role="form" action="<?= base_url('cPeminjaman/edit/' . $edit->id_pinjam) ?>" method="POST">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Nama Anggota</label>
@@ -38,7 +38,7 @@
                                         <?php
                                         foreach ($anggota as $key => $value) {
                                         ?>
-                                            <option value="<?= $value->id_anggota ?>" <?php if (set_value('anggota') == $value->id_anggota) {
+                                            <option value="<?= $value->id_anggota ?>" <?php if ($edit->id_anggota == $value->id_anggota) {
                                                                                             echo 'selected';
                                                                                         } ?>><?= $value->nama_anggota ?></option>
                                         <?php
@@ -53,10 +53,25 @@
                                         <option value="">---Pilih Judul Buku---</option>
                                         <?php
                                         foreach ($buku as $key => $value) {
+                                            if ($edit->id_buku == $value->id_buku) {
                                         ?>
-                                            <option value="<?= $value->id_buku ?>" <?php if (set_value('buku') == $value->id_buku) {
-                                                                                        echo 'selected';
-                                                                                    } ?>><?= $value->judul ?> | <?= $value->nama_kategori ?></option>
+                                                <option value="<?= $value->id_buku ?>" <?php if ($edit->id_buku == $value->id_buku) {
+                                                                                            echo 'selected';
+                                                                                        } ?>><?= $value->judul ?> | <?= $value->nama_kategori ?></option>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <option value="<?= $value->id_buku ?>" <?php if ($edit->id_buku == $value->id_buku) {
+                                                                                            echo 'selected';
+                                                                                        } ?>><?php if ($value->status != '1') {
+                                                                                                ?>
+                                                        <?= $value->judul ?> | <?= $value->nama_kategori ?>
+                                                    <?php
+                                                                                                } ?></option>
+                                            <?php
+                                            }
+                                            ?>
+
                                         <?php
                                         }
                                         ?>
@@ -65,23 +80,22 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Tanggal Peminjaman</label>
-                                    <input name="tgl_pinjam" type="text" value="<?= date('Y-m-d') ?>" name="password" class="form-control" readonly>
+                                    <input name="tgl_pinjam" type="text" value="<?= $edit->tgl_pinjam ?>" name="password" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Batas Peminjaman</label>
                                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                        <input name="bts" value="<?= set_value('bts') ?>" type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                                        <input name="bts" value="<?= $edit->bts_pinjam ?>" type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
                                         <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
                                     </div>
                                     <?= form_error('bts', '<small class="text-danger">', '</small>') ?>
                                 </div>
-
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>
                     </div>
