@@ -14,6 +14,7 @@ class cPeminjaman extends CI_Controller
 
     public function index()
     {
+        $this->protect->protect();
         $data = array(
             'pinjam' => $this->mPeminjaman->select_pinjam()
 
@@ -26,6 +27,7 @@ class cPeminjaman extends CI_Controller
     }
     public function create()
     {
+        $this->protect->protect();
         $this->form_validation->set_rules('anggota', 'Nama Anggota', 'required');
         $this->form_validation->set_rules('buku', 'Judul Buku', 'required');
         $this->form_validation->set_rules('bts', 'Batas Peminjaman', 'required');
@@ -60,6 +62,7 @@ class cPeminjaman extends CI_Controller
     }
     public function edit($id)
     {
+        $this->protect->protect();
         $this->form_validation->set_rules('anggota', 'Nama Anggota', 'required');
         $this->form_validation->set_rules('buku', 'Judul Buku', 'required');
         $this->form_validation->set_rules('bts', 'Batas Peminjaman', 'required');

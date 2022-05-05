@@ -6,7 +6,7 @@ class cDashboard extends CI_Controller
 
     public function index()
     {
-
+        $this->protect->protect();
         $this->load->view('Layouts/head');
         $this->load->view('Layouts/navbar');
         $this->load->view('Layouts/aside');

@@ -11,6 +11,7 @@ class mPeminjaman extends CI_Model
         $this->db->join('admin', 'admin.id_admin = peminjaman.id_admin', 'left');
         $this->db->join('anggota', 'anggota.id_anggota = peminjaman.id_anggota', 'left');
         $this->db->join('kategori_buku', 'kategori_buku.id_kategori = buku.id_kategori', 'left');
+        $this->db->where('stat_pinjam=0');
         return $this->db->get()->result();
     }
     public function select_buku()

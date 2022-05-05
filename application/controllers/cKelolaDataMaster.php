@@ -13,6 +13,7 @@ class cKelolaDataMaster extends CI_Controller
     //kelola data admin
     public function admin()
     {
+        $this->protect->protect();
         $data = array(
             'admin' => $this->mDataMaster->select_admin()
         );
@@ -24,6 +25,7 @@ class cKelolaDataMaster extends CI_Controller
     }
     public function create_admin()
     {
+        $this->protect->protect();
         $this->load->view('Layouts/head');
         $this->load->view('Layouts/navbar');
         $this->load->view('Layouts/aside');
@@ -32,6 +34,7 @@ class cKelolaDataMaster extends CI_Controller
     }
     public function pcreate_admin()
     {
+        $this->protect->protect();
         $data = array(
             'nama_admin' => $this->input->post('nama'),
             'alamat' => $this->input->post('alamat'),
@@ -45,6 +48,7 @@ class cKelolaDataMaster extends CI_Controller
     }
     public function edit_admin($id)
     {
+        $this->protect->protect();
         $data = array(
             'admin' => $this->mDataMaster->edit_admin($id)
         );
@@ -56,6 +60,7 @@ class cKelolaDataMaster extends CI_Controller
     }
     public function update_admin($id)
     {
+        $this->protect->protect();
         $data = array(
             'nama_admin' => $this->input->post('nama'),
             'alamat' => $this->input->post('alamat'),
@@ -77,6 +82,7 @@ class cKelolaDataMaster extends CI_Controller
     //kelola data kategori
     public function kategori()
     {
+        $this->protect->protect();
         $data = array(
             'kategori' => $this->mDataMaster->select_kategori()
         );
@@ -88,6 +94,7 @@ class cKelolaDataMaster extends CI_Controller
     }
     public function create_kategori()
     {
+        $this->protect->protect();
         $this->load->view('Layouts/head');
         $this->load->view('Layouts/navbar');
         $this->load->view('Layouts/aside');
@@ -96,6 +103,7 @@ class cKelolaDataMaster extends CI_Controller
     }
     public function pcreate_kategori()
     {
+        $this->protect->protect();
         $data = array(
             'nama_kategori' => $this->input->post('kategori')
         );
@@ -105,6 +113,7 @@ class cKelolaDataMaster extends CI_Controller
     }
     public function edit_kategori($id)
     {
+        $this->protect->protect();
         $data = array(
             'kategori' => $this->mDataMaster->edit_kategori($id)
         );
@@ -138,6 +147,7 @@ class cKelolaDataMaster extends CI_Controller
 
     public function buku()
     {
+        $this->protect->protect();
         $data = array(
             'buku' => $this->mDataMaster->select_buku()
         );
@@ -149,6 +159,7 @@ class cKelolaDataMaster extends CI_Controller
     }
     public function create_buku()
     {
+        $this->protect->protect();
         $data = array(
             'kategori' => $this->mDataMaster->select_kategori()
         );
@@ -160,6 +171,7 @@ class cKelolaDataMaster extends CI_Controller
     }
     public function pcreate_buku()
     {
+        $this->protect->protect();
         $data = array(
             'id_kategori' => $this->input->post('kategori'),
             'judul'  => $this->input->post('judul'),

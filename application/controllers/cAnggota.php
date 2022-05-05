@@ -13,6 +13,7 @@ class cAnggota extends CI_Controller
 
     public function index()
     {
+        $this->protect->protect();
         $data = array(
             'anggota' => $this->mAnggota->select()
         );
