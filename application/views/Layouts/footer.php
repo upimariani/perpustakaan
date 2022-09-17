@@ -1,10 +1,9 @@
 <!-- Main Footer -->
 <footer class="main-footer">
-  <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-  All rights reserved.
-  <div class="float-right d-none d-sm-inline-block">
-    <b>Version</b> 3.0.5
-  </div>
+	<strong>PERPUSTAKAAN SDN 1 CARACAS</strong>
+	<div class="float-right d-none d-sm-inline-block">
+		<b>Version</b> 3.0.5
+	</div>
 </footer>
 </div>
 <!-- ./wrapper -->
@@ -43,169 +42,206 @@
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script>
-  $(function() {
-    //Initialize Select2 Elements
-    $('.select2').select2()
+	$(function() {
+		//Initialize Select2 Elements
+		$('.select2').select2()
 
-    //Date range picker
-    $('#reservationdate').datetimepicker({
-      format: 'YYYY-MM-DD'
-    });
-  })
+		//Date range picker
+		$('#reservationdate').datetimepicker({
+			format: 'YYYY-MM-DD'
+		});
+	})
+</script>
+<script>
+	console.log = function() {}
+	$("#buku").on('change', function() {
+
+		$(".jml_buku").html($(this).find(':selected').attr('data-sisa'));
+		$(".jml_buku").val($(this).find(':selected').attr('data-sisa'));
+
+		$(".nama").html($(this).find(':selected').attr('data-nama'));
+		$(".nama").val($(this).find(':selected').attr('data-nama'));
+
+	});
 </script>
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('#admin').validate({
-      rules: {
-        nama: {
-          required: true
-        },
-        no_hp: {
-          required: true,
-          number: true,
-          minlength: 11,
-          maxlength: 13
-        },
-        alamat: {
-          required: true
-        },
-        username: {
-          required: true
-        },
-        password: {
-          required: true
-        }
+	$(document).ready(function() {
+		$('#admin').validate({
+			rules: {
+				nama: {
+					required: true
+				},
+				no_hp: {
+					required: true,
+					number: true,
+					minlength: 11,
+					maxlength: 13
+				},
+				alamat: {
+					required: true
+				},
+				username: {
+					required: true
+				},
+				password: {
+					required: true
+				}
 
-      },
-      messages: {
-        nama: {
-          required: "Masukkan Nama Admin"
-        },
-        no_hp: {
-          required: "Masukkan No Telepon",
-          minlength: "No Telepon Minimal 11 angka",
-          maxlength: "No Telepon Maksimal 13 angka"
+			},
+			messages: {
+				nama: {
+					required: "Masukkan Nama Admin"
+				},
+				no_hp: {
+					required: "Masukkan No Telepon",
+					minlength: "No Telepon Minimal 11 angka",
+					maxlength: "No Telepon Maksimal 13 angka"
 
-        },
-        alamat: {
-          required: "Masukkan Alamat Admin"
-        },
-        username: {
-          required: "Masukkan Username"
-        },
-        password: {
-          required: "Masukkan Password"
-        },
-      },
-      errorElement: 'span',
-      errorPlacement: function(error, element) {
-        error.addClass('invalid-feedback');
-        element.closest('.form-group').append(error);
-      },
-      highlight: function(element, errorClass, validClass) {
-        $(element).addClass('is-invalid');
-      },
-      unhighlight: function(element, errorClass, validClass) {
-        $(element).removeClass('is-invalid');
-      }
-    });
-  });
+				},
+				alamat: {
+					required: "Masukkan Alamat Admin"
+				},
+				username: {
+					required: "Masukkan Username"
+				},
+				password: {
+					required: "Masukkan Password"
+				},
+			},
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+	});
 </script>
 <script>
-  $(document).ready(function() {
-    $('#kategori').validate({
-      rules: {
-        kategori: {
-          required: true
-        }
+	$(document).ready(function() {
+		$('#kategori').validate({
+			rules: {
+				kategori: {
+					required: true
+				},
+				rak: {
+					required: true
+				}
 
-      },
-      messages: {
-        kategori: {
-          required: "Masukkan Kategori Buku"
-        }
-      },
-      errorElement: 'span',
-      errorPlacement: function(error, element) {
-        error.addClass('invalid-feedback');
-        element.closest('.form-group').append(error);
-      },
-      highlight: function(element, errorClass, validClass) {
-        $(element).addClass('is-invalid');
-      },
-      unhighlight: function(element, errorClass, validClass) {
-        $(element).removeClass('is-invalid');
-      }
-    });
-  });
+			},
+			messages: {
+				kategori: {
+					required: "Masukkan Kategori Buku"
+				},
+				rak: {
+					required: "Masukkan Nomor Rak Buku"
+				}
+			},
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+	});
 </script>
 <script>
-  $(document).ready(function() {
-    $('#buku').validate({
-      rules: {
-        kategori: {
-          required: true
-        },
-        judul: {
-          required: true
-        },
-        pengarang: {
-          required: true
-        },
-        tahun: {
-          required: true
-        },
-        penerbit: {
-          required: true
-        },
-      },
-      messages: {
-        kategori: {
-          required: "Masukkan Kategori Buku"
-        },
-        judul: {
-          required: "Masukkan Judul Buku"
-        },
-        pengarang: {
-          required: "Masukkan Pengarang Buku"
-        },
-        tahun: {
-          required: "Masukkan Tahun Buku"
-        },
-        penerbit: {
-          required: "Masukkan Penerbit Buku"
-        },
-      },
-      errorElement: 'span',
-      errorPlacement: function(error, element) {
-        error.addClass('invalid-feedback');
-        element.closest('.form-group').append(error);
-      },
-      highlight: function(element, errorClass, validClass) {
-        $(element).addClass('is-invalid');
-      },
-      unhighlight: function(element, errorClass, validClass) {
-        $(element).removeClass('is-invalid');
-      }
-    });
-  });
+	$(document).ready(function() {
+		$('#buku').validate({
+			rules: {
+				kategori: {
+					required: true
+				},
+				judul: {
+					required: true
+				},
+				pengarang: {
+					required: true
+				},
+				tahun: {
+					required: true
+				},
+				penerbit: {
+					required: true
+				},
+				isbn: {
+					required: true
+				},
+				sampul: {
+					required: true
+				},
+				jml: {
+					required: true
+				},
+
+			},
+			messages: {
+				kategori: {
+					required: "Masukkan Kategori Buku"
+				},
+				judul: {
+					required: "Masukkan Judul Buku"
+				},
+				pengarang: {
+					required: "Masukkan Pengarang Buku"
+				},
+				tahun: {
+					required: "Masukkan Tahun Buku"
+				},
+				penerbit: {
+					required: "Masukkan Penerbit Buku"
+				},
+				isbn: {
+					required: "Masukkan No ISBN Buku"
+				},
+				sampul: {
+					required: "Masukkan Sampul Buku"
+				},
+				jml: {
+					required: "Masukkan Jumlah Buku"
+				},
+			},
+			errorElement: 'span',
+			errorPlacement: function(error, element) {
+				error.addClass('invalid-feedback');
+				element.closest('.form-group').append(error);
+			},
+			highlight: function(element, errorClass, validClass) {
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).removeClass('is-invalid');
+			}
+		});
+	});
 </script>
 <script>
-  $(function() {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
+	$(function() {
+		$("#example1").DataTable({
+			"responsive": true,
+			"autoWidth": false,
+		});
+		$('#example2').DataTable({
+			"paging": true,
+			"lengthChange": false,
+			"searching": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false,
+			"responsive": true,
+		});
+	});
 </script>
 </body>
 

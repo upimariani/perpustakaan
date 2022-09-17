@@ -4,12 +4,12 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Create New Anggota</h1>
+					<h1>Update Anggota</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Create Anggota</li>
+						<li class="breadcrumb-item active">Update Anggota</li>
 					</ol>
 				</div>
 			</div>
@@ -28,20 +28,20 @@
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form role="form" action="<?= base_url('cAnggota/create') ?>" method="POST">
+						<form role="form" action="<?= base_url('cAnggota/edit/' . $anggota->id_anggota) ?>" method="POST">
 							<div class="card-body">
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label for="exampleInputEmail1">Nama Anggota</label>
-											<input type="text" value="<?= set_value('nama') ?>" name="nama" class="form-control" placeholder="Masukkan Nama Anggota">
+											<input type="text" value="<?= $anggota->nama_anggota ?>" name="nama" class="form-control" placeholder="Masukkan Nama Anggota">
 											<?= form_error('nama', '<small class="text-danger">', '</small>') ?>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label for="exampleInputEmail1">NIS Anggota</label>
-											<input type="text" value="<?= set_value('nis') ?>" name="nis" class="form-control" placeholder="Masukkan NIS Anggota">
+											<input type="text" value="<?= $anggota->nis ?>" name="nis" class="form-control" placeholder="Masukkan NIS Anggota">
 											<?= form_error('nis', '<small class="text-danger">', '</small>') ?>
 										</div>
 									</div>
@@ -52,10 +52,10 @@
 											<label for="exampleInputPassword1">Jenis Kelamin</label>
 											<select name="jk" class="form-control">
 												<option value="">---Pilih Jenis Kelamin---</option>
-												<option value="1" <?php if (set_value('jk') == '1') {
+												<option value="1" <?php if ($anggota->jk == '1') {
 																		echo 'selected';
 																	} ?>>Perempuan</option>
-												<option value="2" <?php if (set_value('jk') == '2') {
+												<option value="2" <?php if ($anggota->jk == '2') {
 																		echo 'selected';
 																	} ?>>Laki-Laki</option>
 											</select>
@@ -65,7 +65,7 @@
 									<div class="col-lg-6">
 										<div class="form-group">
 											<label for="exampleInputPassword1">Kelas</label>
-											<input type="text" value="<?= set_value('kelas') ?>" name="kelas" class="form-control" placeholder="Masukkan Kelas">
+											<input type="text" value="<?= $anggota->kelas ?>" name="kelas" class="form-control" placeholder="Masukkan Alamat">
 											<?= form_error('kelas', '<small class="text-danger">', '</small>') ?>
 										</div>
 									</div>
