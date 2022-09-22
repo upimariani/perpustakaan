@@ -58,9 +58,13 @@
 
 												} ?>
 											</td>
-											<td><a href="<?= base_url('cPeminjaman/detail_peminjaman/' . $value->id_pinjam) ?>" class="btn btn-app btn-sm">
+											<td class="text-center"><a href="<?= base_url('cPeminjaman/detail_peminjaman/' . $value->id_pinjam) ?>" class="btn btn-app btn-sm">
 													<i class="fas fa-info"></i> Detail
-												</a></td>
+												</a>
+												<a href="<?= base_url('cPengembalian/delete/' . $value->id_detail . '/' . $value->id_pinjam) ?>" class="btn btn-app btn-sm">
+													<i class="fas fa-trash"></i> Hapus
+												</a>
+											</td>
 										</tr>
 									<?php
 									}

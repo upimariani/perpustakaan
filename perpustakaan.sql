@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Sep 2022 pada 00.46
+-- Waktu pembuatan: 22 Sep 2022 pada 11.16
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -57,6 +57,14 @@ CREATE TABLE `anggota` (
   `jk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `anggota`
+--
+
+INSERT INTO `anggota` (`id_anggota`, `nis`, `nama_anggota`, `kelas`, `jk`) VALUES
+(1, '2321456', 'Salsa', '7', 1),
+(2, '32569875', 'Zainal', '7', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -78,6 +86,14 @@ CREATE TABLE `buku` (
   `create_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `buku`
+--
+
+INSERT INTO `buku` (`id_buku`, `id_kategori`, `sampul`, `no_isbn`, `judul`, `pengarang`, `tahun`, `penerbit`, `jml_buku`, `sisa_buku`, `status`, `create_at`) VALUES
+(1, 1, 'squence_diagram-pengiriman1.png', '5687-532-20', 'Filsafat Ilmu Kehidupan', 'Danar Sutardi', '2005', 'PT Erlangga Jaya', 2, 2, 1, '2022-09-22 03:07:25'),
+(2, 1, 'squence_diagram-login_admin.png', '78956-5899-21', 'Filsafat Ilmu Agama', 'Danar Sutardi', '2022', 'Danar Sutardi', 2, 6, 0, '2022-09-22 03:11:14');
+
 -- --------------------------------------------------------
 
 --
@@ -88,8 +104,16 @@ CREATE TABLE `detail_peminjaman` (
   `id_detail` int(11) NOT NULL,
   `id_pinjam` varchar(30) NOT NULL,
   `id_buku` int(11) NOT NULL,
-  `jml` int(11) NOT NULL
+  `jml` int(11) NOT NULL,
+  `stat_pinjam` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `detail_peminjaman`
+--
+
+INSERT INTO `detail_peminjaman` (`id_detail`, `id_pinjam`, `id_buku`, `jml`, `stat_pinjam`) VALUES
+(1, 'P20220922tG73l', 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -123,8 +147,15 @@ CREATE TABLE `peminjaman` (
   `tgl_pinjam` varchar(20) NOT NULL,
   `bts_pinjam` varchar(20) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `stat_pinjam` int(11) NOT NULL DEFAULT 0
+  `stat_pinjam_all` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `peminjaman`
+--
+
+INSERT INTO `peminjaman` (`id_pinjam`, `id_anggota`, `id_admin`, `tgl_pinjam`, `bts_pinjam`, `time`, `stat_pinjam_all`) VALUES
+('P20220922tG73l', 1, 1, '2022-09-22', '2022-09-29', '2022-09-22 04:32:04', 1);
 
 -- --------------------------------------------------------
 
@@ -134,10 +165,17 @@ CREATE TABLE `peminjaman` (
 
 CREATE TABLE `pengembalian` (
   `id_kembali` int(11) NOT NULL,
-  `id_pinjam` int(11) NOT NULL,
+  `id_detail` int(11) NOT NULL,
   `tgl_kembali` varchar(15) NOT NULL,
   `denda` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pengembalian`
+--
+
+INSERT INTO `pengembalian` (`id_kembali`, `id_detail`, `tgl_kembali`, `denda`) VALUES
+(1, 1, '2022-09-22', '0');
 
 --
 -- Indexes for dumped tables
@@ -199,19 +237,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_peminjaman`
 --
 ALTER TABLE `detail_peminjaman`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_buku`
@@ -223,7 +261,7 @@ ALTER TABLE `kategori_buku`
 -- AUTO_INCREMENT untuk tabel `pengembalian`
 --
 ALTER TABLE `pengembalian`
-  MODIFY `id_kembali` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kembali` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

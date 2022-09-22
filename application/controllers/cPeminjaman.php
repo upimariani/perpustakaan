@@ -74,7 +74,8 @@ class cPeminjaman extends CI_Controller
 				$detail = array(
 					'id_buku' => $value['id'],
 					'id_pinjam' => $this->input->post('id_pinjam'),
-					'jml' => $value['qty']
+					'jml' => $value['qty'],
+					'stat_pinjam' => '0'
 				);
 				$this->db->insert('detail_peminjaman', $detail);
 
@@ -154,13 +155,25 @@ class cPeminjaman extends CI_Controller
 			redirect('cPeminjaman');
 		}
 	}
-	public function delete($id, $buku)
+	public function delete($id)
 	{
-		$data = array(
-			'status' => '0'
-		);
-		$this->mPeminjaman->update_status($buku, $data);
+		$peminjaman = $this->mPeminjaman->detail_peminjaman($id);
+		foreach ($peminjaman['buku'] as $key => $value) {
+			$jml_kembali = $value->sisa_buku + $value->jml;
+			if ($value->sisa_buku == '0') {
+				$status = array(
+					'status' => '0',
+					'sisa_buku' => $jml_kembali
+				);
+			} else {
+				$status = array(
+					'sisa_buku' => $jml_kembali
+				);
+			}
+			$this->mPeminjaman->update_status($value->id_buku, $status);
+		}
 		$this->mPeminjaman->delete($id);
+
 		$this->session->set_flashdata('success', 'Data Peminjaman Berhasil Dihapus!');
 		redirect('cPeminjaman');
 	}

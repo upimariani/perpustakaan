@@ -22,8 +22,8 @@
 				<!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
 				<li class="nav-item">
 					<a href="<?= base_url('cDashboard') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'cDashboard') {
-																																		echo 'active';
-																																	}  ?>">
+																				echo 'active';
+																			}  ?>">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
 						<p>
 							Dashboard
@@ -32,8 +32,8 @@
 				</li>
 				<li class="nav-item">
 					<a href="<?= base_url('cAnggota') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'cAnggota') {
-																																	echo 'active';
-																																}  ?>">
+																				echo 'active';
+																			}  ?>">
 						<i class="nav-icon fas fa-user"></i>
 						<p>
 							Anggota
@@ -41,11 +41,11 @@
 					</a>
 				</li>
 				<li class="nav-item has-treeview <?php if ($this->uri->segment(1) == 'cKelolaDataMaster') {
-																						echo 'menu-open';
-																					}  ?>">
+														echo 'menu-open';
+													}  ?>">
 					<a href="#" class="nav-link  <?php if ($this->uri->segment(1) == 'cKelolaDataMaster') {
-																					echo 'active';
-																				}  ?>">
+														echo 'active';
+													}  ?>">
 						<i class="nav-icon fas fa-database"></i>
 						<p>
 							Kelola Data Master
@@ -55,24 +55,24 @@
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
 							<a href="<?= base_url('cKelolaDataMaster/admin') ?>" class="nav-link  <?php if ($this->uri->segment(1) == 'cKelolaDataMaster' && $this->uri->segment(2) == 'admin') {
-																																											echo 'active';
-																																										}  ?>">
+																										echo 'active';
+																									}  ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Data Admin</p>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a href="<?= base_url('cKelolaDataMaster/kategori') ?>" class="nav-link  <?php if ($this->uri->segment(1) == 'cKelolaDataMaster' && $this->uri->segment(2) == 'kategori') {
-																																													echo 'active';
-																																												}  ?>">
+																											echo 'active';
+																										}  ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Data Kategori Buku</p>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a href="<?= base_url('cKelolaDataMaster/buku') ?>" class="nav-link  <?php if ($this->uri->segment(1) == 'cKelolaDataMaster' && $this->uri->segment(2) == 'buku') {
-																																											echo 'active';
-																																										}  ?>">
+																										echo 'active';
+																									}  ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Data Buku</p>
 							</a>
@@ -81,8 +81,8 @@
 				</li>
 				<li class="nav-item">
 					<a href="<?= base_url('cPeminjaman') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'cPeminjaman') {
-																																			echo 'active';
-																																		}  ?>">
+																					echo 'active';
+																				}  ?>">
 						<i class="nav-icon fas fa-book-open"></i>
 						<p>
 							Peminjaman
@@ -91,8 +91,8 @@
 				</li>
 				<li class="nav-item">
 					<a href="<?= base_url('cPengembalian') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'cPengembalian') {
-																																				echo 'active';
-																																			}  ?>">
+																					echo 'active';
+																				}  ?>">
 						<i class="nav-icon fas fa-address-book"></i>
 						<p>
 							Pengembalian
@@ -101,11 +101,21 @@
 				</li>
 				<li class="nav-item">
 					<a href="<?= base_url('cLaporan') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'cLaporan') {
-																																	echo 'active';
-																																}  ?>">
-						<i class="nav-icon fas fa-book"></i>
+																				echo 'active';
+																			}  ?>">
+						<i class="nav-icon fas fa-archive"></i>
 						<p>
-							Laporan
+							Laporan Peminjaman
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url('cLaporanPengembalian') ?>" class="nav-link <?php if ($this->uri->segment(1) == 'cLaporanPengembalian') {
+																							echo 'active';
+																						}  ?>">
+						<i class="nav-icon fas fa-undo"></i>
+						<p>
+							Laporan Pengembalian
 						</p>
 					</a>
 				</li>

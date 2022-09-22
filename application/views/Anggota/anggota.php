@@ -82,6 +82,8 @@
 								</tbody>
 								<tfoot>
 									<th class="text-center">No.</th>
+									<th class="text-center">NIS</th>
+
 									<th class="text-center">Nama Anggota</th>
 									<th class="text-center">Kelas</th>
 									<th class="text-center">Jenis Kelamin</th>

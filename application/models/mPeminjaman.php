@@ -9,7 +9,7 @@ class mPeminjaman extends CI_Model
 		$this->db->from('peminjaman');
 		$this->db->join('admin', 'admin.id_admin = peminjaman.id_admin', 'left');
 		$this->db->join('anggota', 'anggota.id_anggota = peminjaman.id_anggota', 'left');
-		$this->db->where('stat_pinjam=0');
+		$this->db->where('stat_pinjam_all=0');
 		return $this->db->get()->result();
 	}
 	public function detail_peminjaman($id)
@@ -59,11 +59,24 @@ class mPeminjaman extends CI_Model
 		$this->db->where('id_pinjam', $id);
 		$this->db->update('peminjaman', $data);
 	}
+
+	// //menampilkan buku yang dipinjam
+	// public function buku_pinjam($id)
+	// {
+	// 	return $this->db->query("SELECT * FROM `peminjaman` JOIN detail_peminjaman ON peminjaman.id_pinjam=detail_peminjaman.id_pinjam JOIN buku ON detail_peminjaman.id_buku=buku.id_buku WHERE peminjaman.id_pinjam='" . $id . "'")->result();
+	// }
+	//delete peminjaman
 	public function delete($id)
 	{
 		$this->db->where('id_pinjam', $id);
 		$this->db->delete('peminjaman');
 	}
+	// //delete detail_peminjaman
+	// public function delete_detail($id)
+	// {
+	// 	$this->db->where('id_pinjam', $id);
+	// 	$this->db->delete('detail_peminjaman');
+	// }
 }
 
 /* End of file mPeminjaman.php */

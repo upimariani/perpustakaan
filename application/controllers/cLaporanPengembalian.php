@@ -1,32 +1,26 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class cLaporan extends CI_Controller
+class cLaporanPengembalian extends CI_Controller
 {
+
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('mPeminjaman');
-		$this->load->model('mAnggota');
-		$this->load->model('mDataMaster');
 		$this->load->model('mLaporan');
 	}
 
 	public function index()
 	{
 		$this->protect->protect();
-		$data = array(
-			'pinjam' => $this->mPeminjaman->select_pinjam()
 
-		);
 		$this->load->view('Layouts/head');
 		$this->load->view('Layouts/navbar');
 		$this->load->view('Layouts/aside');
-		$this->load->view('laporan/laporan', $data);
+		$this->load->view('laporanPengembalian/laporan');
 		$this->load->view('Layouts/footer');
 	}
-
 	public function lap_harian()
 	{
 		$tanggal = $this->input->post('tanggal');
@@ -34,16 +28,16 @@ class cLaporan extends CI_Controller
 		$tahun = $this->input->post('tahun');
 
 		$data = array(
-			'title' => 'Laporan Peminjaman Harian',
+			'title' => 'Laporan Pengembalian Harian',
 			'tanggal' => $tanggal,
 			'bulan' => $bulan,
 			'tahun' => $tahun,
-			'laporan' => $this->mLaporan->lap_harian($tanggal, $bulan, $tahun),
+			'laporan' => $this->mLaporan->lap_harian_pengembalian($tanggal, $bulan, $tahun),
 		);
 		$this->load->view('Layouts/head');
 		$this->load->view('Layouts/navbar');
 		$this->load->view('Layouts/aside');
-		$this->load->view('laporan/hari', $data);
+		$this->load->view('laporanPengembalian/harian', $data);
 		$this->load->view('Layouts/footer');
 	}
 
@@ -53,15 +47,15 @@ class cLaporan extends CI_Controller
 		$tahun = $this->input->post('tahun');
 
 		$data = array(
-			'title' => 'Laporan Peminjaman Bulanan',
+			'title' => 'Laporan Pengembalian Bulanan',
 			'bulan' => $bulan,
 			'tahun' => $tahun,
-			'laporan' => $this->mLaporan->lap_bulanan($bulan, $tahun),
+			'laporan' => $this->mLaporan->lap_bulanan_pengembalian($bulan, $tahun),
 		);
 		$this->load->view('Layouts/head');
 		$this->load->view('Layouts/navbar');
 		$this->load->view('Layouts/aside');
-		$this->load->view('laporan/bulan', $data);
+		$this->load->view('laporanPengembalian/bulanan', $data);
 		$this->load->view('Layouts/footer');
 	}
 
@@ -70,14 +64,16 @@ class cLaporan extends CI_Controller
 		$tahun = $this->input->post('tahun');
 
 		$data = array(
-			'title' => 'Laporan Peminjaman Tahunan',
+			'title' => 'Laporan Pengembalian Tahunan',
 			'tahun' => $tahun,
-			'laporan' => $this->mLaporan->lap_tahunan($tahun),
+			'laporan' => $this->mLaporan->lap_tahunan_pengembalian($tahun),
 		);
 		$this->load->view('Layouts/head');
 		$this->load->view('Layouts/navbar');
 		$this->load->view('Layouts/aside');
-		$this->load->view('laporan/tahun', $data);
+		$this->load->view('laporanPengembalian/tahunan', $data);
 		$this->load->view('Layouts/footer');
 	}
 }
+
+/* End of file cLaporanPengembalian.php */
