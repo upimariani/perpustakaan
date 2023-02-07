@@ -30,7 +30,10 @@
 		<div class="card">
 			<div class="card-body login-card-body">
 				<div class="login-logo">
-					<a href="#"><b>Informasi</b>BUKU</a>
+					<a href="#"><b>INFORMASI BUKU</b></a><br>
+					<a href="<?= base_url('clearning') ?>">
+						<h4><strong>AKSES BUKU DIGITAL DISINI!</strong></h4>
+					</a>
 				</div>
 
 				<p class="login-box-msg">Masukkan data Buku yang dicari</p>
@@ -40,6 +43,7 @@
 						<div class="card">
 							<div class="card-header">
 								<h3 class="card-title">Informasi Status Buku</h3>
+
 							</div>
 							<!-- /.card-header -->
 							<div class="card-body">

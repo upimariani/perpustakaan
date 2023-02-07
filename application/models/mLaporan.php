@@ -89,6 +89,44 @@ class mLaporan extends CI_Model
 		$this->db->where('YEAR(tgl_kembali)', $tahun);
 		return $this->db->get()->result();
 	}
+
+	//laporan buku masuk
+	public function buku_harian($tanggal, $bulan, $tahun, $id_kategori)
+	{
+		$this->db->select('*');
+		$this->db->from('buku');
+		$this->db->join('kategori_buku', 'buku.id_kategori = kategori_buku.id_kategori', 'left');
+
+		$this->db->where('DAY(create_at)', $tanggal);
+		$this->db->where('MONTH(create_at)', $bulan);
+		$this->db->where('YEAR(create_at)', $tahun);
+		$this->db->where('buku.id_kategori', $id_kategori);
+
+		return $this->db->get()->result();
+	}
+	public function buku_bulanan($bulan, $tahun, $id_kategori)
+	{
+		$this->db->select('*');
+		$this->db->from('buku');
+		$this->db->join('kategori_buku', 'buku.id_kategori = kategori_buku.id_kategori', 'left');
+
+		$this->db->where('MONTH(create_at)', $bulan);
+		$this->db->where('YEAR(create_at)', $tahun);
+		$this->db->where('buku.id_kategori', $id_kategori);
+
+		return $this->db->get()->result();
+	}
+	public function buku_tahunan($tahun, $id_kategori)
+	{
+		$this->db->select('*');
+		$this->db->from('buku');
+		$this->db->join('kategori_buku', 'buku.id_kategori = kategori_buku.id_kategori', 'left');
+
+		$this->db->where('YEAR(create_at)', $tahun);
+		$this->db->where('buku.id_kategori', $id_kategori);
+
+		return $this->db->get()->result();
+	}
 }
 
 /* End of file M_laporan.php */

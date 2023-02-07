@@ -27,7 +27,7 @@
 		<div class="card">
 			<div class="card-body login-card-body">
 				<div class="login-logo">
-					<a href="#"><b>Login</b>ADMIN</a>
+					<a href="#"><b>LOGIN</b><b> </b><b>ADMIN</b></a>
 				</div>
 				<?php
 				if ($this->session->userdata('error')) {

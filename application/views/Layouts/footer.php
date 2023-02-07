@@ -41,6 +41,14 @@
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?= base_url('asset/AdminLTE/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- Summernote -->
+<script src="<?= base_url('asset/AdminLTE/') ?>plugins/summernote/summernote-bs4.min.js"></script>
+<script>
+	$(function() {
+		// Summernote
+		$('.textarea').summernote()
+	})
+</script>
 <script>
 	$(function() {
 		//Initialize Select2 Elements
@@ -51,6 +59,31 @@
 			format: 'YYYY-MM-DD'
 		});
 	})
+</script>
+<!-- Checkout Section End -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#anggota').change(function() {
+			var id = $(this).val();
+			$.ajax({
+				url: "<?php echo site_url('cPeminjaman/cek_peminjaman'); ?>",
+				method: "POST",
+				data: {
+					id: id
+				},
+				async: true,
+				dataType: 'json',
+				success: function(data) {
+
+					var html = '';
+					html = '<p>' + data.jml_peminjaman + '</p>';
+
+					$('#informasi_pelanggan').html(html);
+				}
+			});
+			return false;
+		});
+	});
 </script>
 <script>
 	console.log = function() {}

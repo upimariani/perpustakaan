@@ -8,6 +8,7 @@ class cDashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('mDashboard');
+        $this->load->model('mEbook');
     }
 
     public function index()
@@ -15,7 +16,8 @@ class cDashboard extends CI_Controller
         $this->protect->protect();
         $data = array(
             'jml' => $this->mDashboard->jml(),
-            'buku' => $this->mDashboard->buku()
+            'buku' => $this->mDashboard->buku(),
+            'history' => $this->mEbook->histori()
         );
         $this->load->view('Layouts/head');
         $this->load->view('Layouts/navbar');

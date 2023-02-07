@@ -145,7 +145,7 @@ class cKelolaDataMaster extends CI_Controller
 
 
 
-
+	//buku
 
 	public function buku()
 	{
@@ -257,6 +257,25 @@ class cKelolaDataMaster extends CI_Controller
 		);
 		$this->mDataMaster->update_buku($id, $data);
 		$this->session->set_flashdata('success', 'Data Buku Berhasil Diperbaharui!');
+		redirect('cKelolaDataMaster/buku');
+	}
+
+	public function elearning($id)
+	{
+		$this->protect->protect();
+		$config['upload_path']          = './asset/elearning';
+		$config['allowed_types']        = 'pdf';
+		$config['max_size']             = 200000;
+
+		$this->load->library('upload', $config);
+		$this->upload->do_upload('elearning');
+		$upload_data = $this->upload->data();
+		$data = array(
+			'sinopsis' => $this->input->post('sinopsis'),
+			'file' => $upload_data['file_name']
+		);
+		$this->mDataMaster->update_buku($id, $data);
+		$this->session->set_flashdata('success', 'Data e-Buku Berhasil Ditambahkan!');
 		redirect('cKelolaDataMaster/buku');
 	}
 

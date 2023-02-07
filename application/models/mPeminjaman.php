@@ -3,6 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class mPeminjaman extends CI_Model
 {
+	public function cek_peminjaman($id)
+	{
+		return $this->db->query("SELECT SUM(jml) as jml_peminjaman, anggota.id_anggota FROM `detail_peminjaman` JOIN peminjaman ON peminjaman.id_pinjam=detail_peminjaman.id_pinjam JOIN anggota ON peminjaman.id_anggota=anggota.id_anggota WHERE stat_pinjam_all = 0 AND anggota.id_anggota='" . $id . "'")->row();
+	}
 	public function select_pinjam()
 	{
 		$this->db->select('*');

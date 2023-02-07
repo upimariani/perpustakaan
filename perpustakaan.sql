@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Sep 2022 pada 11.16
+-- Waktu pembuatan: 09 Jan 2023 pada 15.34
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -83,16 +83,17 @@ CREATE TABLE `buku` (
   `jml_buku` int(11) NOT NULL,
   `sisa_buku` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
-  `create_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `sinopsis` text DEFAULT NULL,
+  `file` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `buku`
 --
 
-INSERT INTO `buku` (`id_buku`, `id_kategori`, `sampul`, `no_isbn`, `judul`, `pengarang`, `tahun`, `penerbit`, `jml_buku`, `sisa_buku`, `status`, `create_at`) VALUES
-(1, 1, 'squence_diagram-pengiriman1.png', '5687-532-20', 'Filsafat Ilmu Kehidupan', 'Danar Sutardi', '2005', 'PT Erlangga Jaya', 2, 2, 1, '2022-09-22 03:07:25'),
-(2, 1, 'squence_diagram-login_admin.png', '78956-5899-21', 'Filsafat Ilmu Agama', 'Danar Sutardi', '2022', 'Danar Sutardi', 2, 6, 0, '2022-09-22 03:11:14');
+INSERT INTO `buku` (`id_buku`, `id_kategori`, `sampul`, `no_isbn`, `judul`, `pengarang`, `tahun`, `penerbit`, `jml_buku`, `sisa_buku`, `status`, `create_at`, `sinopsis`, `file`) VALUES
+(2, 1, 'squence_diagram-login_admin.png', '78956-5899-21', 'Filsafat Ilmu Agama', 'Danar Sutardi', '2022', 'Danar Sutardi', 2, 6, 0, '2022-09-22 03:11:14', '<p><span style=\"background-color: rgb(0, 255, 0);\">gjkfgdfryyh</span></p>', '533-Article_Text-2222-1-10-201912311.pdf');
 
 -- --------------------------------------------------------
 
@@ -114,6 +115,28 @@ CREATE TABLE `detail_peminjaman` (
 
 INSERT INTO `detail_peminjaman` (`id_detail`, `id_pinjam`, `id_buku`, `jml`, `stat_pinjam`) VALUES
 (1, 'P20220922tG73l', 2, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `history_ebook`
+--
+
+CREATE TABLE `history_ebook` (
+  `id_histori` int(11) NOT NULL,
+  `id_anggota` int(11) NOT NULL,
+  `id_buku` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `history_ebook`
+--
+
+INSERT INTO `history_ebook` (`id_histori`, `id_anggota`, `id_buku`, `time`) VALUES
+(1, 1, 2, '2023-01-09 14:27:01'),
+(2, 1, 2, '2023-01-09 14:27:12'),
+(3, 1, 2, '2023-01-09 14:27:55');
 
 -- --------------------------------------------------------
 
@@ -206,6 +229,12 @@ ALTER TABLE `detail_peminjaman`
   ADD PRIMARY KEY (`id_detail`);
 
 --
+-- Indeks untuk tabel `history_ebook`
+--
+ALTER TABLE `history_ebook`
+  ADD PRIMARY KEY (`id_histori`);
+
+--
 -- Indeks untuk tabel `kategori_buku`
 --
 ALTER TABLE `kategori_buku`
@@ -250,6 +279,12 @@ ALTER TABLE `buku`
 --
 ALTER TABLE `detail_peminjaman`
   MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `history_ebook`
+--
+ALTER TABLE `history_ebook`
+  MODIFY `id_histori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_buku`

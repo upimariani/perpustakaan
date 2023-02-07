@@ -83,7 +83,56 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Informasi History E-Book</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Judul Buku</th>
+                    <th>Anggota</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $no = 1;
+                  foreach ($history as $key => $value) {
+                  ?>
+                    <tr>
+                      <td><?= $no++ ?></td>
+                      <td><?= $value->judul ?></td>
+                      <td><?= $value->nama_anggota ?></td>
+                      <td><?= $value->time ?></td>
 
+                    </tr>
+                  <?php
+                  }
+                  ?>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>No</th>
+                    <th>Judul Buku</th>
+                    <th>Anggota</th>
+                    <th>Time</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
       <div class="row">
         <div class="col-md-12">
           <div class="card">

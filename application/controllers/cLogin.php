@@ -9,8 +9,6 @@ class cLogin extends CI_Controller
 		parent::__construct();
 		$this->load->model('mLogin');
 	}
-
-
 	public function index()
 	{
 		$this->load->view('login');
