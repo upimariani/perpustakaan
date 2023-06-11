@@ -61,26 +61,16 @@
 											<td class="text-center"><a href="<?= base_url('cPeminjaman/detail_peminjaman/' . $value->id_pinjam) ?>" class="btn btn-app btn-sm">
 													<i class="fas fa-info"></i> Detail
 												</a>
-												<a href="<?= base_url('cPengembalian/delete/' . $value->id_detail . '/' . $value->id_pinjam) ?>" class="btn btn-app btn-sm">
+												<!-- <a href="<?= base_url('cPengembalian/delete/' . $value->id_detail . '/' . $value->id_pinjam) ?>" class="btn btn-app btn-sm">
 													<i class="fas fa-trash"></i> Hapus
-												</a>
+												</a> -->
 											</td>
 										</tr>
 									<?php
 									}
 									?>
 								</tbody>
-								<tfoot>
-									<tr>
-										<th class="text-center">No.</th>
-										<th class="text-center">NIS</th>
-										<th class="text-center">Anggota</th>
-										<th class="text-center">Tanggal Pinjam</th>
-										<th class="text-center">Tanggal Kembali</th>
-										<th class="text-center">Detail</th>
 
-									</tr>
-								</tfoot>
 							</table>
 						</div>
 						<!-- /.card-body -->

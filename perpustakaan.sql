@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jan 2023 pada 15.34
+-- Waktu pembuatan: 05 Apr 2023 pada 14.31
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -74,6 +74,7 @@ INSERT INTO `anggota` (`id_anggota`, `nis`, `nama_anggota`, `kelas`, `jk`) VALUE
 CREATE TABLE `buku` (
   `id_buku` int(11) NOT NULL,
   `id_kategori` int(11) NOT NULL,
+  `kelas` varchar(5) NOT NULL,
   `sampul` text NOT NULL,
   `no_isbn` varchar(20) NOT NULL,
   `judul` text NOT NULL,
@@ -92,8 +93,19 @@ CREATE TABLE `buku` (
 -- Dumping data untuk tabel `buku`
 --
 
-INSERT INTO `buku` (`id_buku`, `id_kategori`, `sampul`, `no_isbn`, `judul`, `pengarang`, `tahun`, `penerbit`, `jml_buku`, `sisa_buku`, `status`, `create_at`, `sinopsis`, `file`) VALUES
-(2, 1, 'squence_diagram-login_admin.png', '78956-5899-21', 'Filsafat Ilmu Agama', 'Danar Sutardi', '2022', 'Danar Sutardi', 2, 6, 0, '2022-09-22 03:11:14', '<p><span style=\"background-color: rgb(0, 255, 0);\">gjkfgdfryyh</span></p>', '533-Article_Text-2222-1-10-201912311.pdf');
+INSERT INTO `buku` (`id_buku`, `id_kategori`, `kelas`, `sampul`, `no_isbn`, `judul`, `pengarang`, `tahun`, `penerbit`, `jml_buku`, `sisa_buku`, `status`, `create_at`, `sinopsis`, `file`) VALUES
+(2, 1, '6', 'Bahasa-Inggris-BS-KLS-V-cover2.png', '78956-5899-21', 'Filsafat Ilmu Agama', 'Danar Sutardi', '2022', 'Danar Sutardi', 2, 2, 0, '2022-09-22 03:11:14', '<p><span style=\"background-color: rgb(0, 255, 0);\">gjkfgdfryyh</span></p>', 'Bahasa-Indonesia-BS-KLS-V1.pdf'),
+(3, 1, '6', 'Islam-BS-KLS-V-cover1.png', '1233sdss', 'zdsd', 'sds', '1212', 'sdsd', 15, 15, 0, '2023-02-05 12:24:32', '<p>sfsdfsd</p>', 'Bahasa-Indonesia-BS-KLS-V1.pdf'),
+(4, 1, '6', 'Matematika-BS-KLS-IV-cover2.png', '23212asda', 'asaas', 'aa', '2321', 'SFDGER', 8, 8, 0, '2023-02-05 12:24:53', '<p>cgvfgdfdf</p>', 'Matematika-BS-KLS-IV1.pdf'),
+(5, 1, '5', 'Bahasa-Indonesia-BS-KLS-V-cover1.png', '4342321dfd', 'sdfsds', 'asewqeq', '3221', 'sfdfds', 2, 2, 0, '2023-02-05 12:25:13', '<p>fvhgfh</p>', 'Islam-BS-KLS-I1.pdf'),
+(6, 1, '5', 'Bahasa-Indonesia-BS-KLS-I-Cover1.png', '2321ffd', 'scssf', 'ghgjyh', '45667', 'ghgfjf', 8, 8, 0, '2023-02-05 12:25:33', '<p>vhgfhgf</p>', 'Matematika-Vol-1-BS-KLS-V1.pdf'),
+(7, 1, '5', 'Kumpulan-Puisi_Dian-Ratnawati_Rev-1_0_Convert_Cover-Depan-600x8571.jpg', '2343453dfd', 'bjgf', 'esdrf', '2022', 'sdsd', 100, 100, 0, '2023-02-05 12:30:08', '<p>dfdfdx</p>', 'Islam-BS-KLS-I11.pdf'),
+(8, 1, '4', 'Pengantar-Dasar-Matematika_-Sri-Suryanti-rev-1_0-depan1.jpg', 'sads123234', 'cgfgd', 'xdfgds', '2321', 'sdsd', 1, 1, 0, '2023-02-05 12:37:13', '<p>fcgfd</p>', 'Matematika-BS-KLS-IV11.pdf'),
+(9, 1, '4', 'Matematika-Vol-1-BS-KLS-V-cover1.png', 'cgfgrf3434', 'asaas', 'asewqeq', '1212', 'SFDGER', 150, 150, 0, '2023-02-05 12:37:32', '<p>hfghfg</p>', 'Bahasa-Inggris-BS-KLS-V11.pdf'),
+(10, 1, '3', 'Matematika-BS-KLS-IV-cover3.png', '23212asdsdsds', 'asaas', 'asewqeq', '45667', 'sdsd', 150, 150, 0, '2023-02-05 12:38:00', '<p>vhghd</p>', 'Biodata_Igrily_Alhadist1.pdf'),
+(11, 1, '2', 'Bahasa-Indonesia-BS-KLS-I-Cover11.png', '23212asdacg', 'zdsd', 'asewqeq', '3221', 'sdsd', 15, 15, 0, '2023-02-05 12:38:22', '<p>vhghghg</p>', '533-Article_Text-2222-1-10-2019123111.pdf'),
+(12, 1, '1', 'Matematika-BS-KLS-IV-cover4.png', 'sdsd34', 'dfdsa', 'dsfgds', '2022', 'SFDGER', 1, 1, 0, '2023-02-05 12:44:50', '<p>dgdfgs</p>', 'Bahasa-Indonesia-BS-KLS-V11.pdf'),
+(13, 1, '1', 'Matematika-Vol-1-BS-KLS-V-cover11.png', '1233sdss', 'fdgdf', 'dfg', '2022', 'SFDGER', 15, 15, 0, '2023-02-05 12:45:51', '<p>sfdfds</p>', 'jago-ngomong-bahasa-inggris-revisi-3_1-Convert-depan-521x768.jpg');
 
 -- --------------------------------------------------------
 
@@ -136,7 +148,21 @@ CREATE TABLE `history_ebook` (
 INSERT INTO `history_ebook` (`id_histori`, `id_anggota`, `id_buku`, `time`) VALUES
 (1, 1, 2, '2023-01-09 14:27:01'),
 (2, 1, 2, '2023-01-09 14:27:12'),
-(3, 1, 2, '2023-01-09 14:27:55');
+(3, 1, 2, '2023-01-09 14:27:55'),
+(4, 1, 7, '2023-02-05 12:30:38'),
+(5, 1, 3, '2023-04-05 11:01:10'),
+(6, 1, 3, '2023-04-05 11:02:02'),
+(7, 1, 3, '2023-04-05 11:02:11'),
+(8, 1, 3, '2023-04-05 11:02:56'),
+(9, 1, 4, '2023-04-05 11:35:02'),
+(10, 1, 4, '2023-04-05 11:37:21'),
+(11, 1, 4, '2023-04-05 11:38:41'),
+(12, 1, 4, '2023-04-05 12:14:10'),
+(13, 1, 2, '2023-04-05 12:27:35'),
+(14, 1, 2, '2023-04-05 12:28:02'),
+(15, 1, 10, '2023-04-05 12:30:35'),
+(16, 1, 10, '2023-04-05 12:30:51'),
+(17, 1, 3, '2023-04-05 12:30:57');
 
 -- --------------------------------------------------------
 
@@ -155,7 +181,8 @@ CREATE TABLE `kategori_buku` (
 --
 
 INSERT INTO `kategori_buku` (`id_kategori`, `nama_kategori`, `no_rak`) VALUES
-(1, 'Filsafat', '1189');
+(1, 'Filsafat', '1189'),
+(2, 'Bahasa Indonesia', '8');
 
 -- --------------------------------------------------------
 
@@ -272,7 +299,7 @@ ALTER TABLE `anggota`
 -- AUTO_INCREMENT untuk tabel `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_peminjaman`
@@ -284,13 +311,13 @@ ALTER TABLE `detail_peminjaman`
 -- AUTO_INCREMENT untuk tabel `history_ebook`
 --
 ALTER TABLE `history_ebook`
-  MODIFY `id_histori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_histori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori_buku`
 --
 ALTER TABLE `kategori_buku`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengembalian`

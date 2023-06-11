@@ -190,7 +190,8 @@ class cKelolaDataMaster extends CI_Controller
 			'penerbit'  => $this->input->post('penerbit'),
 			'no_isbn' => $this->input->post('isbn'),
 			'jml_buku' => $this->input->post('jml'),
-			'sisa_buku' => $this->input->post('jml')
+			'sisa_buku' => $this->input->post('jml'),
+			'kelas' => $this->input->post('kelas')
 		);
 		$this->mDataMaster->insert_buku($data);
 		$this->session->set_flashdata('success', 'Data Buku Berhasil Ditambahkan!');
@@ -239,7 +240,9 @@ class cKelolaDataMaster extends CI_Controller
 				'no_isbn' => $this->input->post('isbn'),
 				'jml_buku' => $this->input->post('jml'),
 				'sisa_buku' => $this->input->post('jml'),
-				'sampul' => $upload_data['file_name']
+				'sampul' => $upload_data['file_name'],
+				'kelas' => $this->input->post('kelas')
+
 			);
 			$this->mDataMaster->update_buku($id, $data);
 			$this->session->set_flashdata('success', 'Data Buku Berhasil Diperbaharui!');
@@ -253,7 +256,8 @@ class cKelolaDataMaster extends CI_Controller
 			'penerbit'  => $this->input->post('penerbit'),
 			'no_isbn' => $this->input->post('isbn'),
 			'jml_buku' => $this->input->post('jml'),
-			'sisa_buku' => $this->input->post('jml')
+			'sisa_buku' => $this->input->post('jml'),
+			'kelas' => $this->input->post('kelas')
 		);
 		$this->mDataMaster->update_buku($id, $data);
 		$this->session->set_flashdata('success', 'Data Buku Berhasil Diperbaharui!');

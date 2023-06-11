@@ -56,7 +56,7 @@
                         </button>
 
                         <!-- Text Logo -->
-                        <a class="navbar-brand" href="<?= base_url('cList') ?>"><i class="fa fa-book" aria-hidden="true"></i> E-LEARNING</a>
+                        <a class="navbar-brand" href="<?= base_url('cList') ?>"><i class="fa fa-book" aria-hidden="true"></i> E-LIBRARY</a>
 
                         <!-- Image Logo -->
                         <!-- <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png"></a> -->
@@ -99,8 +99,68 @@
             </div>
         </div>
     </section>
+    <!-- Start Book Overview -->
+    <section id="mu-book-overview">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mu-book-overview-area">
 
-    <!-- Start Featured Slider -->
+                        <div class="mu-heading-area">
+                            <h2 class="mu-heading-title">Pencarian Buku</h2>
+                            <span class="mu-header-dot"></span>
+                        </div>
+
+                        <!-- Start Book Overview Content -->
+                        <!-- Start Featured Slider -->
+                        <div class="mu-contact-content">
+                            <?php
+                            $kategori = $this->db->query("SELECT * FROM `kategori_buku`")->result();
+                            $kelas = $this->db->query("SELECT * FROM `buku` GROUP BY kelas;")->result();
+                            ?>
+
+                            <div id="form-messages"></div>
+                            <form method="post" action="<?= base_url('cList/perkategori') ?>" class="mu-contact-form">
+                                <div class="form-group">
+                                    <select class="form-control" name="kategori" required>
+                                        <option value="">--Pilih Kategori Buku--- </option>
+                                        <option value="all_kategori">All</option>
+                                        <?php
+                                        foreach ($kategori as $key => $value) {
+                                        ?>
+                                            <option value="<?= $value->id_kategori ?>"><?= $value->nama_kategori ?></option>
+                                        <?php
+                                        }
+                                        ?>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="kelas" required>
+                                        <option value="">--Pilih Kelas--- </option>
+                                        <option value="all_kelas">All</option>
+                                        <?php
+                                        foreach ($kelas as $key => $value) {
+                                        ?>
+                                            <option value="<?= $value->kelas ?>"><?= $value->kelas ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <button type="submit" class="mu-send-msg-btn"><span>Cari</span></button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- End Book Overview -->
+
+
 
     <!-- Start main content -->
 

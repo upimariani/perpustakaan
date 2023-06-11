@@ -58,6 +58,10 @@
 									</select>
 								</div>
 								<div class="form-group">
+									<label for="exampleInputPassword1">Kelas</label>
+									<input type="number" name="kelas" value="<?= $buku->kelas ?>" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Siswa Kelas">
+								</div>
+								<div class="form-group">
 									<label for="exampleInputPassword1">Judul</label>
 									<input type="text" name="judul" value="<?= $buku->judul ?>" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Judul Buku">
 								</div>

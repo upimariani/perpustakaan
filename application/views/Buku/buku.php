@@ -66,7 +66,9 @@
 											<td><?= $value->no_isbn ?></td>
 											<td><img style="width: 200px;" src="<?= base_url('asset/sampul/' . $value->sampul) ?>"></td>
 											<td><?= $value->judul ?><br>
-												Kategori: <span class="badge badge-info"> <?= $value->nama_kategori ?></span></td>
+												Kategori: <span class="badge badge-info"> <?= $value->nama_kategori ?></span>
+												<br>Kelas : <?= $value->kelas ?>
+											</td>
 											<td><?= $value->pengarang ?></td>
 											<td><?= $value->penerbit ?></td>
 											<td><?= $value->tahun ?></td>
